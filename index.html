@@ -51,8 +51,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   font-size:clamp(3rem,10vw,7rem);font-weight:800;letter-spacing:-0.03em;line-height:1;
   opacity:0;animation:cinFadeUp 1s ease 1s forwards;
 }
-.cin-name .w1{color:var(--text);}
-.cin-name .w2{color:transparent;-webkit-text-stroke:2px var(--cyan);text-shadow:0 0 60px rgba(0,212,255,0.5);}
+.cin-name .w1{color:#ffffff;}
+.cin-name .w2{color:var(--cyan);text-shadow:0 0 40px rgba(0,212,255,0.6),0 0 80px rgba(0,212,255,0.3);}
 .cin-sub{
   font-family:var(--mono);font-size:0.88rem;color:var(--text-dim);letter-spacing:0.08em;
   opacity:0;animation:cinFadeUp 0.8s ease 1.6s forwards;
@@ -68,16 +68,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
 }
 @keyframes cinFadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
 
-/* Glitch effect on name */
-.cin-name{position:relative;}
-.cin-name::before,.cin-name::after{
-  content:attr(data-text);position:absolute;inset:0;
-  font-size:clamp(3rem,10vw,7rem);font-weight:800;letter-spacing:-0.03em;
-}
-.cin-name::before{color:var(--red);clip-path:polygon(0 30%,100% 30%,100% 50%,0 50%);transform:translateX(-3px);animation:glitch1 4s infinite 3s;}
-.cin-name::after{color:var(--cyan);clip-path:polygon(0 60%,100% 60%,100% 75%,0 75%);transform:translateX(3px);animation:glitch2 4s infinite 3s;}
-@keyframes glitch1{0%,90%,100%{opacity:0;}92%{opacity:0.6;transform:translateX(-4px);}94%{opacity:0;}}
-@keyframes glitch2{0%,90%,100%{opacity:0;}93%{opacity:0.6;transform:translateX(4px);}95%{opacity:0;}}
+/* No glitch - clean look */
 
 /* ══ CANVAS ══ */
 #circuit-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0;transition:opacity 2s ease 0.5s;}
@@ -246,7 +237,128 @@ section,#home{max-width:1140px;margin:0 auto;padding:5.5rem 2rem;}
 .form-group input,.form-group textarea{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:0.65rem 1rem;color:var(--text);font-family:var(--sans);font-size:0.88rem;outline:none;transition:all 0.2s;resize:none;}
 .form-group input:focus,.form-group textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,255,0.07);}
 
-/* ══ TYPING ANIMATION ══ */
+/* ══ HERO MOTTO ══ */
+.hero-motto{
+  font-family:var(--mono);font-size:0.95rem;
+  color:transparent;
+  background:linear-gradient(90deg,var(--cyan),var(--gold),var(--cyan));
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;
+  letter-spacing:0.06em;margin-bottom:0.6rem;
+  animation:heroUp 0.8s ease 0.3s forwards, shimmer 4s linear 2s infinite;
+  opacity:0;
+}
+@keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+
+/* ══ MOUSE PARALLAX ══ */
+.parallax-layer{transition:transform 0.1s ease-out;}
+
+/* ══ FLOATING PARTICLES ══ */
+.particle{
+  position:fixed;border-radius:50%;pointer-events:none;z-index:0;
+  background:var(--cyan);opacity:0;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+  0%{transform:translateY(0) scale(1);opacity:0;}
+  10%{opacity:0.6;}
+  90%{opacity:0.1;}
+  100%{transform:translateY(-100vh) scale(0.3);opacity:0;}
+}
+
+/* ══ SECTION REVEAL ENHANCED ══ */
+.reveal-left{opacity:0;transform:translateX(-50px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1);}
+.reveal-left.in{opacity:1;transform:none;}
+.reveal-right{opacity:0;transform:translateX(50px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1);}
+.reveal-right.in{opacity:1;transform:none;}
+.reveal-up{opacity:0;transform:translateY(40px);transition:all 0.8s cubic-bezier(0.4,0,0.2,1);}
+.reveal-up.in{opacity:1;transform:none;}
+.reveal-scale{opacity:0;transform:scale(0.85);transition:all 0.7s cubic-bezier(0.34,1.56,0.64,1);}
+.reveal-scale.in{opacity:1;transform:scale(1);}
+
+/* ══ GLOWING CURSOR TRAIL ══ */
+.cursor-trail{
+  position:fixed;width:8px;height:8px;border-radius:50%;
+  background:var(--cyan);pointer-events:none;z-index:9998;
+  transition:transform 0.1s ease;mix-blend-mode:screen;
+  box-shadow:0 0 10px var(--cyan),0 0 20px var(--cyan);
+}
+.cursor-ring{
+  position:fixed;width:28px;height:28px;border-radius:50%;
+  border:1px solid rgba(0,212,255,0.5);pointer-events:none;z-index:9997;
+  transition:all 0.15s ease;
+}
+
+/* ══ SECTION DIVIDER ANIMATION ══ */
+.sec-divider{
+  height:1px;background:linear-gradient(to right,transparent,var(--cyan),transparent);
+  max-width:1140px;margin:0 auto;
+  transform:scaleX(0);transition:transform 1s ease;
+  transform-origin:left;
+}
+.sec-divider.in{transform:scaleX(1);}
+
+/* ══ STAT COUNTER ANIMATION ══ */
+.stat-num{transition:text-shadow 0.3s;}
+.stat-card:hover .stat-num{text-shadow:0 0 40px rgba(0,212,255,0.9),0 0 80px rgba(0,212,255,0.4);}
+
+/* ══ NAV PROGRESS BAR ══ */
+#scroll-progress{
+  position:fixed;top:58px;left:0;height:2px;z-index:101;width:0%;
+  background:linear-gradient(to right,var(--cyan),var(--gold));
+  transition:width 0.1s linear;box-shadow:0 0 8px var(--cyan);
+}
+
+/* ══ HOVER GLOW TEXT ══ */
+.sec-title:hover span{text-shadow:0 0 30px rgba(0,212,255,0.8);}
+
+/* ══ PROJECT CARD SHINE ══ */
+.proj-card::before{
+  content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(0,212,255,0.04),transparent);
+  transform:skewX(-20deg);transition:left 0.6s ease;
+}
+.proj-card:hover::before{left:150%;}
+
+/* ══ BUTTON RIPPLE ══ */
+.btn-cyan,.btn-ghost,.btn-wa{position:relative;overflow:hidden;}
+.btn-cyan::after,.btn-ghost::after,.btn-wa::after{
+  content:'';position:absolute;border-radius:50%;
+  width:0;height:0;background:rgba(255,255,255,0.2);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  transition:width 0.4s ease,height 0.4s ease,opacity 0.4s ease;opacity:1;
+}
+.btn-cyan:active::after,.btn-ghost:active::after,.btn-wa:active::after{
+  width:200px;height:200px;opacity:0;
+}
+
+/* ══ EXPERIENCE CARD PULSE ══ */
+@keyframes dotPulse{
+  0%,100%{box-shadow:0 0 12px rgba(0,212,255,0.7);}
+  50%{box-shadow:0 0 24px rgba(0,212,255,1),0 0 48px rgba(0,212,255,0.4);}
+}
+.exp-dot{animation:dotPulse 2s infinite;}
+
+/* ══ CERT ITEM HOVER ══ */
+.cert-item:hover .cert-icon{
+  animation:spin 0.5s ease;
+}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+/* ══ FOOTER GLOW ══ */
+footer{position:relative;overflow:hidden;}
+footer::before{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:300px;height:1px;
+  background:linear-gradient(to right,transparent,var(--cyan),transparent);
+  animation:footerGlow 3s ease-in-out infinite;
+}
+@keyframes footerGlow{0%,100%{opacity:0.3;width:200px;}50%{opacity:1;width:400px;}}
+
+/* ══ TILT CARD ══ */
+.tilt{transform-style:preserve-3d;transition:transform 0.3s ease;}
+
+
 .hero-type-wrap{display:flex;align-items:center;gap:0;margin-bottom:1.4rem;opacity:0;animation:heroUp 0.6s ease 0.5s forwards;}
 .hero-type-prefix{font-family:var(--mono);font-size:1.1rem;color:var(--cyan);font-weight:700;}
 .hero-typed{font-family:var(--mono);font-size:1.1rem;color:var(--cyan);font-weight:700;background:rgba(0,212,255,0.12);padding:2px 10px;border-radius:3px;min-width:4px;letter-spacing:0.03em;}
@@ -386,6 +498,10 @@ footer span{color:var(--cyan);}
   </div>
 </div>
 
+<div id="scroll-progress"></div>
+<div class="cursor-trail" id="cursor-trail"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
 <canvas id="circuit-canvas"></canvas>
 
 <div class="page" id="main-page">
@@ -411,6 +527,7 @@ footer span{color:var(--cyan);}
 <div id="home">
   <p class="hero-eyebrow"><span class="eline"></span>ENGINEERING INTELLIGENCE. DELIVERING RESULTS.</p>
   <h1 class="hero-headline"><span class="big">Apurba </span><span class="accent">Koley</span></h1>
+  <p class="hero-motto">Building Intelligent Solutions. Engineering the Future.</p>
   <p class="hero-tagline">// I build systems that fly, track, and think.</p>
   <div class="hero-type-wrap">
     <span class="hero-type-prefix">&gt; </span><span id="hero-typed" class="hero-typed"></span><span class="hero-type-cursor">|</span>
@@ -638,7 +755,8 @@ footer span{color:var(--cyan);}
       <p style="font-family:var(--mono);font-size:0.6rem;color:var(--text-mute);letter-spacing:0.15em;margin-top:2px;">TOTAL VISITORS</p>
     </div>
   </div>
-  <p>© 2026 <span>Apurba Koley</span> ·  Building Intelligent Solutions. Engineering the Future · Noida, India</p>
+  <p style="font-family:var(--mono);font-size:0.78rem;color:var(--cyan);letter-spacing:0.1em;margin-bottom:0.4rem;">Building Intelligent Solutions. Engineering the Future.</p>
+  <p>© 2026 <span>Apurba Koley</span> · Project Manager &amp; AI Developer · Noida, India</p>
 </footer>
 </div>
 
@@ -856,6 +974,82 @@ window.addEventListener('scroll', () => {
     }, 500);
   } catch(e){}
 })();
+
+// ══ SCROLL PROGRESS BAR ══
+const scrollBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (window.scrollY / total) * 100;
+  if(scrollBar) scrollBar.style.width = pct + '%';
+});
+
+// ══ CURSOR TRAIL ══
+const trail = document.getElementById('cursor-trail');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => {
+  mx=e.clientX; my=e.clientY;
+  if(trail){ trail.style.left=(mx-4)+'px'; trail.style.top=(my-4)+'px'; }
+});
+function animRing(){
+  rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+  if(ring){ ring.style.left=(rx-14)+'px'; ring.style.top=(ry-14)+'px'; }
+  requestAnimationFrame(animRing);
+}
+animRing();
+document.addEventListener('mousedown',()=>{if(trail)trail.style.transform='scale(2)';});
+document.addEventListener('mouseup',()=>{if(trail)trail.style.transform='scale(1)';});
+
+// ══ FLOATING PARTICLES ══
+function spawnParticle(){
+  const p=document.createElement('div');
+  p.className='particle';
+  const size=Math.random()*3+1;
+  p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}vw;bottom:-10px;animation-duration:${Math.random()*8+6}s;animation-delay:${Math.random()*2}s;opacity:0;`;
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(), 16000);
+}
+setInterval(spawnParticle, 600);
+
+// ══ 3D TILT ON PROJECT CARDS ══
+document.querySelectorAll('.proj-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width/2;
+    const y = e.clientY - r.top - r.height/2;
+    const rotX = (-y/r.height)*10;
+    const rotY = (x/r.width)*10;
+    card.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// ══ MOUSE PARALLAX ON HERO ══
+document.getElementById('home')?.addEventListener('mousemove', e => {
+  const x = (e.clientX/window.innerWidth - 0.5)*20;
+  const y = (e.clientY/window.innerHeight - 0.5)*20;
+  const headline = document.querySelector('.hero-headline');
+  if(headline) headline.style.transform = `translate(${x*0.4}px,${y*0.4}px)`;
+});
+
+// ══ SECTION DIVIDERS ══
+document.querySelectorAll('section').forEach(sec => {
+  const div = document.createElement('div');
+  div.className = 'sec-divider';
+  sec.prepend(div);
+  observer.observe(div);
+});
+
+// ══ ENHANCED REVEAL CLASSES ══
+document.querySelectorAll('.about-text').forEach(el => el.classList.add('reveal-left'));
+document.querySelectorAll('.stats-grid').forEach(el => el.classList.add('reveal-right'));
+document.querySelectorAll('.radar-box').forEach(el => el.classList.add('reveal-scale'));
+document.querySelectorAll('.sec-title').forEach(el => el.classList.add('reveal-up'));
+
+// Re-observe new elements
+document.querySelectorAll('.reveal-left,.reveal-right,.reveal-up,.reveal-scale,.sec-divider').forEach(el => observer.observe(el));
 
 // ══ TYPING ANIMATION ══
 const typingRoles = [
