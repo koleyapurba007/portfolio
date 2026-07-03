@@ -355,6 +355,48 @@ footer::before{
 }
 @keyframes footerGlow{0%,100%{opacity:0.3;width:200px;}50%{opacity:1;width:400px;}}
 
+/* ══ EXPANDED PROJECT CARDS NEW ══ */
+.proj-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.5rem;}
+.proj-icon{font-size:1.2rem;opacity:0.7;}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;}
+.proj-toggle{font-family:var(--mono);font-size:0.7rem;color:var(--text-dim);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.4rem 1rem;cursor:pointer;display:flex;align-items:center;gap:0.5rem;transition:all 0.2s;width:fit-content;}
+.proj-toggle:hover{border-color:var(--cyan);color:var(--cyan);}
+.proj-toggle .arrow{transition:transform 0.3s;display:inline-block;}
+.proj-toggle.open .arrow{transform:rotate(180deg);}
+.proj-details{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.4,0,0.2,1),opacity 0.4s ease;opacity:0;}
+.proj-details.open{max-height:700px;opacity:1;}
+.proj-details-inner{padding-top:1.2rem;border-top:1px solid var(--border);margin-top:1rem;display:flex;flex-direction:column;gap:1rem;}
+.proj-section-title{font-family:var(--mono);font-size:0.62rem;color:var(--cyan);letter-spacing:0.18em;margin-bottom:0.6rem;}
+.proj-arch{display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.8rem;}
+.arch-wrap{display:flex;flex-direction:column;align-items:center;}
+.arch-label{font-family:var(--mono);font-size:0.52rem;color:var(--text-mute);margin-bottom:2px;}
+.arch-node{font-family:var(--mono);font-size:0.68rem;color:var(--cyan);border:1px solid rgba(0,212,255,0.3);background:rgba(0,212,255,0.07);padding:4px 10px;border-radius:4px;}
+.arch-node::before{content:'> ';}
+.arch-arrow{font-family:var(--mono);font-size:0.7rem;color:var(--text-mute);}
+.proj-list{list-style:none;display:flex;flex-direction:column;gap:0.4rem;}
+.proj-list li{font-size:0.8rem;color:var(--text-dim);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.5;}
+.proj-list li::before{content:'△';color:var(--gold);font-size:0.55rem;margin-top:0.3rem;flex-shrink:0;}
+.proj-list.solution li::before{content:'◎';color:var(--cyan);}
+.proj-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:0.7rem;}
+.metric-card{background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.9rem;text-align:center;}
+.metric-val{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--cyan);line-height:1;margin-bottom:0.25rem;text-shadow:0 0 12px rgba(0,212,255,0.4);}
+.metric-label{font-size:0.65rem;color:var(--text-mute);}
+/* ══ EDUCATION ══ */
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.4rem;}
+.edu-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.7rem 1.8rem;position:relative;overflow:hidden;transition:all 0.3s;opacity:0;transform:translateY(20px);}
+.edu-card.in{opacity:1;transform:none;}
+.edu-card:hover{border-color:rgba(0,212,255,0.35);box-shadow:0 8px 30px rgba(0,212,255,0.08);}
+.edu-head{display:flex;align-items:flex-start;gap:0.9rem;margin-bottom:1.1rem;}
+.edu-icon{flex:none;width:44px;height:44px;border-radius:10px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.25);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.edu-degree{font-size:1.05rem;font-weight:700;color:var(--text);line-height:1.4;}
+.edu-school{font-family:var(--sans);font-size:0.88rem;color:var(--cyan);margin-bottom:1.1rem;}
+.edu-meta{display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;}
+.edu-meta .edu-years{font-family:var(--mono);font-size:0.78rem;color:var(--text-dim);display:flex;align-items:center;gap:0.4rem;}
+.edu-badge{font-family:var(--mono);font-size:0.75rem;background:transparent;border:1px solid rgba(0,212,255,0.3);color:var(--cyan);padding:4px 12px;border-radius:20px;display:inline-flex;align-items:center;gap:0.4rem;}
+.edu-summary{font-family:var(--mono);font-size:0.8rem;color:var(--text-dim);background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:6px;padding:1rem 1.3rem;margin-bottom:1.8rem;display:flex;flex-direction:column;gap:0.45rem;}
+.edu-summary span{color:var(--text);}
+.edu-summary .sep{color:var(--cyan);margin:0 0.4rem;}
+
 /* ══ TILT CARD ══ */
 .tilt{transform-style:preserve-3d;transition:transform 0.3s ease;}
 
@@ -677,14 +719,398 @@ footer span{color:var(--cyan);}
   <p class="sec-tag sec-fade">// PROJECTS</p>
   <h2 class="sec-title sec-fade">Selected <span>work</span></h2>
   <div class="proj-grid">
-    <div class="proj-card"><p class="proj-type">CURRENT · DEFENCE</p><h3 class="proj-name">Interceptor Drone</h3><p class="proj-desc">UAV system for detection and interception of unauthorized aerial targets. Developing core AI software for real-time tracking and autonomous decision logic.</p><div class="proj-tags"><span class="proj-tag">AI Dev</span><span class="proj-tag">Computer Vision</span><span class="proj-tag">Python</span><span class="proj-tag">Project Mgmt</span></div></div>
-    <div class="proj-card"><p class="proj-type">CURRENT · AUTOMOTIVE</p><h3 class="proj-name">Twin Beam Headlight</h3><p class="proj-desc">Adaptive dual-beam automotive lighting with embedded control logic. Leading HW-SW integration testing and vendor coordination as Project Manager.</p><div class="proj-tags"><span class="proj-tag">Project Mgmt</span><span class="proj-tag">HW-SW Integration</span><span class="proj-tag">QA Testing</span></div></div>
-    <div class="proj-card"><p class="proj-type">CURRENT · DEFENCE</p><h3 class="proj-name">Stabilized Camera System</h3><p class="proj-desc">Gimbal-based camera stabilization for drone and ground vehicle platforms. Managing end-to-end delivery and cross-team alignment.</p><div class="proj-tags"><span class="proj-tag">Project Mgmt</span><span class="proj-tag">Functional Testing</span><span class="proj-tag">System Integration</span></div></div>
-    <div class="proj-card"><p class="proj-type">PAST · IoT · HMI</p><h3 class="proj-name">Smart Water Purifier</h3><p class="proj-desc">IoT-enabled purification system. Designed responsive PyQt5 UI and DWIN HMI display for real-time interaction. Deployed OpenRemote on cloud for E2E IoT monitoring via Docker.</p><div class="proj-tags"><span class="proj-tag">PyQt5 UI</span><span class="proj-tag">DWIN HMI</span><span class="proj-tag">OpenRemote</span><span class="proj-tag">Docker</span><span class="proj-tag">IoT</span></div></div>
-    <div class="proj-card"><p class="proj-type">PAST · RAILWAY</p><h3 class="proj-name">IPIS — Passenger Info System</h3><p class="proj-desc">Unified audio/visual passenger information across station displays. Built full test suite covering DB-to-display data flow with E2E communication validation.</p><div class="proj-tags"><span class="proj-tag">System Testing</span><span class="proj-tag">E2E Testing</span><span class="proj-tag">Regression</span></div></div>
-    <div class="proj-card"><p class="proj-type">PAST · DEFENCE · IAF</p><h3 class="proj-name">MAFI VCCS — Indian Air Force</h3><p class="proj-desc">Centralized Voice Communication Control System for military airspace. Integrated and tested PSTN, radio, softphone, and IP phone hardware against Asterisk server.</p><div class="proj-tags"><span class="proj-tag">Integration Testing</span><span class="proj-tag">API Testing</span><span class="proj-tag">Hardware</span></div></div>
-    <div class="proj-card"><p class="proj-type">PAST · RAILWAY · CEL INDIA</p><h3 class="proj-name">MSDAC — Digital Axle Counter</h3><p class="proj-desc">Fail-safe railway track occupancy detection. Designed responsive PyQt5 GUI using Qt Designer, wrote functional test cases, validated edge cases under runtime signals.</p><div class="proj-tags"><span class="proj-tag">PyQt5</span><span class="proj-tag">Qt Designer</span><span class="proj-tag">GUI Testing</span><span class="proj-tag">Functional Testing</span></div></div>
-    <div class="proj-card"><p class="proj-type">PAST · RAILWAY · CEL INDIA</p><h3 class="proj-name">MSDAC Monitor + Clocks</h3><p class="proj-desc">Track occupancy monitor and GPS-synchronized clocks for railway stations. Developed DWIN HMI display UI and validated NTP/NMS server functionality via Docker.</p><div class="proj-tags"><span class="proj-tag">DWIN HMI</span><span class="proj-tag">NTP/NMS</span><span class="proj-tag">Docker</span><span class="proj-tag">GUI Dev</span></div></div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">CURRENT · DEFENCE</p><span class="proj-icon">🚁</span></div>
+      <h3 class="proj-name">Interceptor Drone</h3>
+      <p class="proj-desc">UAV system for detection and interception of unauthorized aerial targets with real-time AI tracking.</p>
+      <div class="proj-tags"><span class="proj-tag">AI Dev</span><span class="proj-tag">Computer Vision</span><span class="proj-tag">Python</span><span class="proj-tag">Project Mgmt</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">SENSOR</span><span class="arch-node">Camera Feed</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">AI ENGINE</span><span class="arch-node">Detection Model</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">TRACKER</span><span class="arch-node">Target Lock</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">CONTROL</span><span class="arch-node">Intercept Logic</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Real-time target tracking under high-speed motion</li><li>Low-latency inference on edge hardware</li><li>Multi-team coordination across firmware, RF, and AI domains</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>Optimized AI pipeline using lightweight detection models</li><li>EMA smoothing and time-based hold for stable target lock</li><li>Agile sprint management across cross-functional R&D teams</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">3+</div><div class="metric-label">Teams Led</div></div>
+              <div class="metric-card"><div class="metric-val">AI</div><div class="metric-label">Software Dev</div></div>
+              <div class="metric-card"><div class="metric-val">R&D</div><div class="metric-label">Department</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">CURRENT · AUTOMOTIVE</p><span class="proj-icon">💡</span></div>
+      <h3 class="proj-name">Twin Beam Headlight</h3>
+      <p class="proj-desc">Adaptive dual-beam automotive lighting system with embedded control logic and HW-SW integration.</p>
+      <div class="proj-tags"><span class="proj-tag">Project Mgmt</span><span class="proj-tag">HW-SW Integration</span><span class="proj-tag">QA Testing</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">CONTROL</span><span class="arch-node">MCU Logic</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">DRIVER</span><span class="arch-node">Beam Controller</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">OUTPUT</span><span class="arch-node">Dual Beam</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Precise beam switching without flicker or latency</li><li>Vendor alignment across hardware and electronics teams</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>Embedded control logic with timing precision validation</li><li>Structured milestone tracking and acceptance test cycles</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">PM</div><div class="metric-label">Role</div></div>
+              <div class="metric-card"><div class="metric-val">HW+SW</div><div class="metric-label">Integration</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">CURRENT · DEFENCE</p><span class="proj-icon">📷</span></div>
+      <h3 class="proj-name">Stabilized Camera System</h3>
+      <p class="proj-desc">Gimbal-based camera stabilization unit for drone and ground vehicle platforms.</p>
+      <div class="proj-tags"><span class="proj-tag">Project Mgmt</span><span class="proj-tag">Functional Testing</span><span class="proj-tag">System Integration</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">SENSOR</span><span class="arch-node">IMU</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">CONTROL</span><span class="arch-node">Gimbal MCU</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">OUTPUT</span><span class="arch-node">Stable Feed</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Maintaining stability under vibration and rapid motion</li><li>Cross-team alignment across mechanical and software domains</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>PID control tuning with IMU feedback loop</li><li>Structured R&D sprint coordination and field validation</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">PM</div><div class="metric-label">Role</div></div>
+              <div class="metric-card"><div class="metric-val">R&D</div><div class="metric-label">Department</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">PAST · IoT · HMI</p><span class="proj-icon">💧</span></div>
+      <h3 class="proj-name">Smart Water Purifier</h3>
+      <p class="proj-desc">IoT-enabled purification system with DWIN HMI display and OpenRemote cloud monitoring.</p>
+      <div class="proj-tags"><span class="proj-tag">PyQt5 UI</span><span class="proj-tag">DWIN HMI</span><span class="proj-tag">OpenRemote</span><span class="proj-tag">Docker</span><span class="proj-tag">IoT</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">SENSOR</span><span class="arch-node">Sensor Board</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">MCU</span><span class="arch-node">Motherboard</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">HMI</span><span class="arch-node">DWIN Display</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">CLOUD</span><span class="arch-node">OpenRemote</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Low power consumption with real-time monitoring</li><li>Intuitive HMI for non-technical users</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>DWIN HMI with custom UI for real-time system feedback</li><li>OpenRemote deployed via Docker for E2E IoT cloud monitoring</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">E2E</div><div class="metric-label">IoT Pipeline</div></div>
+              <div class="metric-card"><div class="metric-val">Cloud</div><div class="metric-label">Dashboard</div></div>
+              <div class="metric-card"><div class="metric-val">HMI</div><div class="metric-label">Display UI</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">PAST · RAILWAY</p><span class="proj-icon">🚉</span></div>
+      <h3 class="proj-name">IPIS — Passenger Info System</h3>
+      <p class="proj-desc">Unified audio/visual passenger information across railway station displays.</p>
+      <div class="proj-tags"><span class="proj-tag">System Testing</span><span class="proj-tag">E2E Testing</span><span class="proj-tag">Regression</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">DB</span><span class="arch-node">Central Server</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">CONTROL</span><span class="arch-node">IPIS Controller</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">OUTPUT</span><span class="arch-node">Station Displays</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Reliable communication across multiple display boards</li><li>Data consistency from DB to all endpoints simultaneously</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>Built comprehensive test suite covering full data flow</li><li>E2E validation across all communication devices</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">E2E</div><div class="metric-label">Testing</div></div>
+              <div class="metric-card"><div class="metric-val">Multi</div><div class="metric-label">Display</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">PAST · DEFENCE · IAF</p><span class="proj-icon">✈️</span></div>
+      <h3 class="proj-name">MAFI VCCS — Indian Air Force</h3>
+      <p class="proj-desc">Centralized Voice Communication Control System for military airspace operations.</p>
+      <div class="proj-tags"><span class="proj-tag">Integration Testing</span><span class="proj-tag">API Testing</span><span class="proj-tag">Hardware</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">RADIO</span><span class="arch-node">RF Hardware</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">SERVER</span><span class="arch-node">Asterisk</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">CLIENT</span><span class="arch-node">VCCS Portal</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Integration of PSTN, radio, softphone, and IP phones</li><li>Zero tolerance for voice routing failure in military ops</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>Comprehensive hardware integration and API testing</li><li>End-to-end scenario validation across all comm devices</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">IAF</div><div class="metric-label">Client</div></div>
+              <div class="metric-card"><div class="metric-val">4+</div><div class="metric-label">Device Types</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">PAST · RAILWAY · CEL INDIA</p><span class="proj-icon">🛤️</span></div>
+      <h3 class="proj-name">MSDAC — Digital Axle Counter</h3>
+      <p class="proj-desc">Fail-safe railway track occupancy detection with PyQt5 GUI and two-out-of-three architecture.</p>
+      <div class="proj-tags"><span class="proj-tag">PyQt5</span><span class="proj-tag">Qt Designer</span><span class="proj-tag">GUI Testing</span><span class="proj-tag">Functional Testing</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">SENSOR</span><span class="arch-node">Track Sensor</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">MSDAC</span><span class="arch-node">Counter Unit</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">UI</span><span class="arch-node">PyQt5 Monitor</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Fail-safe detection with zero false positives</li><li>Responsive GUI adapting to various screen sizes</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>Designed responsive PyQt5 GUI with Qt Designer</li><li>Rigorous edge case testing under runtime signal conditions</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">CEL</div><div class="metric-label">Client</div></div>
+              <div class="metric-card"><div class="metric-val">PyQt5</div><div class="metric-label">GUI Dev</div></div>
+              <div class="metric-card"><div class="metric-val">2/3</div><div class="metric-label">Fail-safe Arch</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">PAST · RAILWAY · CEL INDIA</p><span class="proj-icon">📟</span></div>
+      <h3 class="proj-name">MSDAC Monitor Unit (MNU)</h3>
+      <p class="proj-desc">Track occupancy monitor unit for railway stations with DWIN HMI display, paired with MSDAC axle counter data.</p>
+      <div class="proj-tags"><span class="proj-tag">DWIN HMI</span><span class="proj-tag">Docker</span><span class="proj-tag">GUI Dev</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">SENSOR</span><span class="arch-node">Track Occupancy Data</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">MNU</span><span class="arch-node">Monitor Unit</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">HMI</span><span class="arch-node">DWIN Display</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Real-time track occupancy status without false positives</li><li>Responsive DWIN HMI UI for station operators</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>DWIN HMI UI development for intuitive real-time display</li><li>Monitor logic integrated with MSDAC axle counter data</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">DWIN</div><div class="metric-label">HMI UI</div></div>
+              <div class="metric-card"><div class="metric-val">Real-time</div><div class="metric-label">Monitoring</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">PAST · RAILWAY · CEL INDIA</p><span class="proj-icon">🕐</span></div>
+      <h3 class="proj-name">Digital GPS Clock &amp; Office Clock</h3>
+      <p class="proj-desc">GPS-synchronized digital station clocks and office clock system for railway stations.</p>
+      <div class="proj-tags"><span class="proj-tag">GPS</span><span class="proj-tag">NTP/NMS</span><span class="proj-tag">Docker</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">GPS</span><span class="arch-node">GPS Receiver</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">NTP</span><span class="arch-node">NTP Server</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">OUTPUT</span><span class="arch-node">Digital &amp; Office Clocks</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>GPS time synchronization accuracy across station clocks</li><li>Reliable NMS monitoring via Docker deployment</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>NTP/NMS server deployed and tested via Docker</li><li>Precise GPS-based time sync across all clock displays</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">GPS</div><div class="metric-label">Sync</div></div>
+              <div class="metric-card"><div class="metric-val">NTP/NMS</div><div class="metric-label">Docker Deployed</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">PERSONAL · IoT · E-PAPER</p><span class="proj-icon">🏷️</span></div>
+      <h3 class="proj-name">E-Paper Price Tag Platform</h3>
+      <p class="proj-desc">ESP32 electronic shelf labels with a web UI and Google Sheets sync.</p>
+      <div class="proj-tags"><span class="proj-tag">ESP32</span><span class="proj-tag">Web UI</span><span class="proj-tag">Google Sheets</span><span class="proj-tag">E-Paper</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">REST</span><span class="arch-node">Google Sheets</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">WI-FI</span><span class="arch-node">Sync Service</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">SPI</span><span class="arch-node">ESP32 Tag</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">DISPLAY</span><span class="arch-node">E-Paper Display</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Ultra-low-power refresh on e-paper</li><li>Non-technical content management</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>Deep-sleep scheduling with partial-refresh rendering</li><li>Google Sheets as a zero-friction CMS via REST sync</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">Months</div><div class="metric-label">Battery Life</div></div>
+              <div class="metric-card"><div class="metric-val">Google Sheets</div><div class="metric-label">CMS</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="sec-tag sec-fade">// EDUCATION</p>
+  <h2 class="sec-title sec-fade">Academic <span>background</span></h2>
+
+  <div class="edu-grid">
+
+    <div class="edu-card">
+      <div class="edu-head">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <p class="edu-degree">Bachelor of Technology</p>
+        </div>
+      </div>
+      <p class="edu-school">St. Mary's Technical Campus, Kolkata</p>
+      <div class="edu-meta">
+        <span class="edu-years">📅 2012 – 2016</span>
+        <span class="edu-badge">⭐ CGPA 8.0</span>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-head">
+        <div class="edu-icon">📚</div>
+        <div>
+          <p class="edu-degree">12th (Higher Secondary) — Science</p>
+        </div>
+      </div>
+      <p class="edu-school">Kotulpur High School</p>
+      <div class="edu-meta">
+        <span class="edu-years">📅 2010 – 2012</span>
+        <span class="edu-badge">⭐ 67%</span>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-head">
+        <div class="edu-icon">🏫</div>
+        <div>
+          <p class="edu-degree">10th (Secondary)</p>
+        </div>
+      </div>
+      <p class="edu-school">Kankeswari High School</p>
+      <div class="edu-meta">
+        <span class="edu-years">📅 Passed 2010</span>
+        <span class="edu-badge">⭐ 83%</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -927,7 +1353,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08 });
 
-document.querySelectorAll('.sec-fade,.about-item,.stat-card,.skill-panel,.exp-card,.proj-card,.os-card,.cert-item').forEach(el => observer.observe(el));
+document.querySelectorAll('.sec-fade,.about-item,.stat-card,.skill-panel,.exp-card,.proj-card,.edu-card,.os-card,.cert-item').forEach(el => observer.observe(el));
 
 // Staggered delays for groups
 document.querySelectorAll('.about-item').forEach((el,i) => el.style.transitionDelay = (i*0.12)+'s');
@@ -1074,6 +1500,17 @@ function typeLoop() {
   setTimeout(typeLoop, tDeleting ? 55 : 90);
 }
 setTimeout(typeLoop, 2800);
+
+// ══ CARD DETAIL TOGGLE (projects + education) ══
+function toggleProj(btn) {
+  const details = btn.nextElementSibling;
+  const isOpen = details.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  const label = isOpen ? 'Hide details ' : 'Show details ';
+  const arrow = btn.querySelector('.arrow');
+  btn.firstChild.textContent = label;
+  if (arrow) btn.appendChild(arrow);
+}
 
 // ══ CHAT WIDGET ══
 let chatOpen = false;
