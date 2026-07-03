@@ -397,6 +397,31 @@ footer::before{
 .edu-summary span{color:var(--text);}
 .edu-summary .sep{color:var(--cyan);margin:0 0.4rem;}
 
+/* ══ BLOG ══ */
+.blog-grid{display:flex;flex-direction:column;gap:1.2rem;}
+.blog-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.6rem;transition:all 0.3s;opacity:0;transform:translateY(30px);}
+.blog-card.in{opacity:1;transform:none;}
+.blog-card:hover{border-color:rgba(0,212,255,0.4);box-shadow:0 16px 50px rgba(0,212,255,0.1);}
+.blog-meta-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:0.9rem;flex-wrap:wrap;}
+.blog-type{font-family:var(--mono);font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;}
+.blog-date{font-family:var(--mono);font-size:0.68rem;color:var(--text-mute);}
+.blog-title{font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:0.6rem;}
+.blog-excerpt{font-size:0.87rem;color:var(--text-dim);line-height:1.7;margin-bottom:1rem;}
+.blog-body{padding-top:1.2rem;border-top:1px solid var(--border);margin-top:1rem;}
+.blog-body h4{font-family:var(--mono);font-size:0.7rem;color:var(--cyan);letter-spacing:0.15em;text-transform:uppercase;margin:1.4rem 0 0.6rem;}
+.blog-body h4:first-child{margin-top:0;}
+.blog-body p{font-size:0.85rem;color:var(--text-dim);line-height:1.75;margin-bottom:0.8rem;}
+.blog-body p strong{color:var(--text);}
+.blog-body a{color:var(--cyan);text-decoration:none;border-bottom:1px dotted rgba(0,212,255,0.4);}
+.blog-body a:hover{border-bottom-style:solid;}
+.blog-body pre{background:#04101c;border:1px solid var(--border);border-radius:6px;padding:0.9rem 1.1rem;overflow-x:auto;margin:0.4rem 0 1.1rem;}
+.blog-body code{font-family:var(--mono);font-size:0.76rem;color:var(--cyan);line-height:1.6;}
+.blog-body p code, .blog-body li code{background:rgba(0,212,255,0.08);padding:1px 6px;border-radius:4px;}
+.blog-body ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1rem;}
+.blog-body ul li{font-size:0.85rem;color:var(--text-dim);line-height:1.6;display:flex;align-items:flex-start;gap:0.6rem;}
+.blog-body ul li::before{content:'▹';color:var(--cyan);flex-shrink:0;margin-top:0.15rem;}
+.blog-body .blog-note{font-size:0.8rem;color:var(--text-mute);border-left:2px solid var(--gold);padding:0.5rem 0.9rem;margin-bottom:1rem;background:rgba(212,168,75,0.04);}
+
 /* ══ TILT CARD ══ */
 .tilt{transform-style:preserve-3d;transition:transform 0.3s ease;}
 
@@ -559,6 +584,7 @@ footer span{color:var(--cyan);}
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#blog">Blog</a></li>
     <li><a href="#certifications">Certs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1025,6 +1051,41 @@ footer span{color:var(--cyan);}
     </div>
 
     <div class="proj-card">
+      <div class="proj-header"><p class="proj-type">PERSONAL · IoT · MONITORING</p><span class="proj-icon">📊</span></div>
+      <h3 class="proj-name">IoT Monitoring Dashboard Stack</h3>
+      <p class="proj-desc">Self-hosted Raspberry Pi monitoring pipeline — MQTT ingestion to live Grafana dashboards.</p>
+      <div class="proj-tags"><span class="proj-tag">Raspberry Pi</span><span class="proj-tag">Node-RED</span><span class="proj-tag">InfluxDB</span><span class="proj-tag">Grafana</span><span class="proj-tag">Mosquitto MQTT</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)">Show details <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div><p class="proj-section-title">// ARCHITECTURE</p>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">MQTT</span><span class="arch-node">Mosquitto Broker</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">FLOW</span><span class="arch-node">Node-RED</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">STORE</span><span class="arch-node">InfluxDB</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">VIEW</span><span class="arch-node">Grafana Dashboard</span></div>
+            </div>
+          </div>
+          <div><p class="proj-section-title">// CHALLENGES</p>
+            <ul class="proj-list"><li>Stale APT repo keys breaking InfluxDB/Grafana installs (NO_PUBKEY errors)</li><li>Exposing the dashboard securely over the internet with valid SSL</li></ul>
+          </div>
+          <div><p class="proj-section-title">// SOLUTIONS</p>
+            <ul class="proj-list solution"><li>Automated provisioning script for Node.js, Node-RED, InfluxDB &amp; Grafana on Pi OS Lite 64-bit</li><li>LAN-first InfluxDB setup with dedicated DB user, then Grafana basic-auth data source binding</li><li>Cron-scheduled Let's Encrypt renewal via Bitnami NGINX + lego for automated SSL</li></ul>
+          </div>
+          <div><p class="proj-section-title">// METRICS</p>
+            <div class="proj-metrics">
+              <div class="metric-card"><div class="metric-val">4</div><div class="metric-label">Services Integrated</div></div>
+              <div class="metric-card"><div class="metric-val">Automated</div><div class="metric-label">SSL Renewal</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj-card">
       <div class="proj-header"><p class="proj-type">PERSONAL · IoT · E-PAPER</p><span class="proj-icon">🏷️</span></div>
       <h3 class="proj-name">E-Paper Price Tag Platform</h3>
       <p class="proj-desc">ESP32 electronic shelf labels with a web UI and Google Sheets sync.</p>
@@ -1138,6 +1199,125 @@ footer span{color:var(--cyan);}
     <div class="cert-item"><span class="cert-icon">✦</span><div><p class="cert-name">Selenium</p><p class="cert-issuer">Great Learning Academy · Jun 2023</p></div></div>
     <div class="cert-item"><span class="cert-icon">✦</span><div><p class="cert-name">Introduction to Selenium</p><p class="cert-issuer">Simplilearn · Jun 2023</p></div></div>
     <div class="cert-item"><span class="cert-icon">✦</span><div><p class="cert-name">Qspider Certified Software Tester</p><p class="cert-issuer">QSpiders · May 2022</p></div></div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <p class="sec-tag sec-fade">// BLOG</p>
+  <h2 class="sec-title sec-fade">Writing &amp; <span>research notes</span></h2>
+  <div class="blog-grid">
+
+    <div class="blog-card">
+      <div class="blog-meta-row">
+        <span class="blog-type">TUTORIAL · IoT · SELF-HOSTED</span>
+        <span class="blog-date">2026</span>
+      </div>
+      <h3 class="blog-title">Building an IoT Monitoring Dashboard with Raspberry Pi, Node-RED, InfluxDB, Grafana &amp; Mosquitto</h3>
+      <p class="blog-excerpt">A complete, self-hosted IoT monitoring pipeline on a single Raspberry Pi — sensor data published over MQTT, reshaped in Node-RED, stored in InfluxDB, and visualized on live Grafana dashboards, with an optional path to secure internet exposure via auto-renewing SSL.</p>
+      <div class="proj-tags"><span class="proj-tag">Raspberry Pi</span><span class="proj-tag">Node-RED</span><span class="proj-tag">InfluxDB</span><span class="proj-tag">Grafana</span><span class="proj-tag">Mosquitto MQTT</span></div>
+      <button class="proj-toggle" onclick="toggleProj(this)" style="margin-top:1rem;">Read full article <span class="arrow">⌄</span></button>
+      <div class="proj-details">
+        <div class="proj-details-inner">
+          <div class="blog-body">
+
+            <h4>Overview</h4>
+            <p>This project sets up a complete, self-hosted IoT monitoring pipeline on a single Raspberry Pi. Sensor data is published over MQTT, ingested and reshaped by Node-RED, written to a time-series database (InfluxDB), and visualized on live Grafana dashboards — accessible over the LAN or, optionally, exposed securely to the internet with auto-renewing SSL certificates.</p>
+
+            <h4>Architecture</h4>
+            <div class="proj-arch">
+              <div class="arch-wrap"><span class="arch-label">MQTT</span><span class="arch-node">Mosquitto Broker</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">FLOW</span><span class="arch-node">Node-RED</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">STORE</span><span class="arch-node">InfluxDB</span></div>
+              <span class="arch-arrow">→</span>
+              <div class="arch-wrap"><span class="arch-label">VIEW</span><span class="arch-node">Grafana Dashboard</span></div>
+            </div>
+
+            <h4>1. Flash the OS</h4>
+            <p>Burn an SD card with <strong>Raspberry Pi OS Lite (64-bit)</strong>, default user <code>pi</code>. Boot the Pi, SSH in, and update the package index:</p>
+            <pre><code>sudo apt update
+sudo apt upgrade</code></pre>
+            <div class="blog-note">A full <code>apt upgrade</code> isn't strictly required for this setup — updating the package index (<code>apt update</code>) is enough to proceed.</div>
+
+            <h4>2. Install Node-RED, InfluxDB &amp; Grafana</h4>
+            <p>Rather than installing each service manually, this setup uses a well-known community installer script (Scargill's Pi provisioning script), which walks through installing Node.js, Node-RED, InfluxDB, and Grafana interactively:</p>
+            <pre><code>wget https://bitbucket.org/api/2.0/snippets/scargill/kAR5qG/master/files/script.sh
+bash script.sh</code></pre>
+            <ul>
+              <li>Script walkthrough: <a href="https://tech.scargill.net/the-script/" target="_blank" rel="noopener">tech.scargill.net/the-script</a></li>
+              <li>Video guide: <a href="https://www.youtube.com/watch?v=JdV4x925au0" target="_blank" rel="noopener">YouTube — Andreas Spiess</a></li>
+            </ul>
+            <p>During the interactive prompts, select <strong>Node-RED with Node.js</strong> and accompanying parameters when asked, then select <strong>Grafana</strong> in a later run. Node-RED default login: <code>admin</code> / <code>admin</code> — change this before exposing the service.</p>
+
+            <h4>Fixing broken package sources (NO_PUBKEY error)</h4>
+            <p>The Grafana/InfluxDB APT repositories referenced by older scripts sometimes go stale, producing a <code>NO_PUBKEY</code> GPG error during <code>apt update</code>. If this happens, re-add the correct signing key and repo source before re-running the install — see <a href="https://www.digitalocean.com/community/questions/no_pubkey-d8ff8e1f7df8b07e" target="_blank" rel="noopener">this reference</a> for the fix pattern. Once resolved, re-run the script and select Grafana again.</p>
+
+            <h4>3. Configure InfluxDB for LAN access</h4>
+            <p>Edit the InfluxDB config to enable the HTTP API and confirm the bind port:</p>
+            <pre><code>sudo nano /etc/influxdb/influxdb.conf</code></pre>
+            <p>In the <code>[http]</code> section:</p>
+            <pre><code>[http]
+  enabled = true
+  bind-address = ":8086"</code></pre>
+            <p>Make the startup script executable and connect using the Pi's LAN IP:</p>
+            <pre><code>chmod +x /usr/lib/influxdb/scripts/influxd-systemd-start.sh
+influx -host 192.168.2.216</code></pre>
+            <p>Create a database user:</p>
+            <pre><code>CREATE USER "pi" WITH PASSWORD 'Lazot@2020' WITH ALL PRIVILEGES
+SHOW USERS</code></pre>
+            <p>Once Node-RED starts injecting data into the target database, verify it landed correctly:</p>
+            <pre><code>SHOW MEASUREMENTS
+SHOW FIELD KEYS</code></pre>
+
+            <h4>4. Install and check Mosquitto MQTT broker</h4>
+            <pre><code>sudo apt-get install mosquitto
+sudo systemctl status mosquitto.service
+sudo netstat -tulpn</code></pre>
+            <p><code>netstat</code> confirms Mosquitto is listening on its default port (1883) alongside InfluxDB (8086) and Node-RED (1880).</p>
+
+            <h4>5. Connect Grafana to InfluxDB</h4>
+            <p>Open Grafana at <code>http://&lt;pi-ip&gt;:3000</code> and add InfluxDB as a data source. The <strong>database name</strong> must match the database Node-RED is writing to, and auth should use basic auth with the InfluxDB user/password created above (<code>pi</code> / your password). From there, build panels against the measurements and fields confirmed in Step 3.</p>
+
+            <h4>6. Optional — automate SSL certificate renewal</h4>
+            <p>If the dashboard sits behind a Bitnami NGINX instance and is exposed with a domain name, certificates can be renewed automatically via a scheduled Let's Encrypt (<code>lego</code>) script. Create the renewal script (replace <code>DOMAIN</code> and <code>EMAIL-ADDRESS</code>):</p>
+            <pre><code>#!/bin/bash
+sudo /opt/bitnami/ctlscript.sh stop nginx
+sudo /opt/bitnami/letsencrypt/lego --tls --email="EMAIL-ADDRESS" --domains="DOMAIN" \
+  --path="/opt/bitnami/letsencrypt" renew --days 90
+sudo /opt/bitnami/ctlscript.sh start nginx</code></pre>
+            <p>Make it executable and schedule it monthly via cron:</p>
+            <pre><code>sudo chmod +x /opt/bitnami/letsencrypt/scripts/renew-certificate.sh
+sudo crontab -e
+# add:
+0 0 1 * * /opt/bitnami/letsencrypt/scripts/renew-certificate.sh 2&gt; /dev/null</code></pre>
+            <div class="blog-note">For multiple domains, update the <code>--domains</code> argument in the script to include each additional domain.</div>
+
+            <h4>Troubleshooting — resetting certificates</h4>
+            <p>If certificate generation fails and you need to start over, this removes generated output, restores the previous certs, and restarts services:</p>
+            <pre><code>rm -rf /opt/bitnami/letsencrypt
+sudo mv /etc/gitlab/ssl/server.crt.old /etc/gitlab/ssl/server.crt
+sudo mv /etc/gitlab/ssl/server.key.old /etc/gitlab/ssl/server.key
+sudo mv /etc/gitlab/ssl/server.csr.old /etc/gitlab/ssl/server.csr
+sudo /opt/bitnami/ctlscript.sh restart</code></pre>
+            <p>If a cron job was created for renewal, open <code>sudo crontab -e</code> and delete the renewal line.</p>
+
+            <h4>Result</h4>
+            <p>A fully self-hosted IoT monitoring pipeline running on a single Raspberry Pi: MQTT ingestion via Mosquitto, flow-based data shaping in Node-RED, time-series storage in InfluxDB, and live dashboards in Grafana — with an optional path to securely expose it over the internet with auto-renewing SSL.</p>
+
+            <h4>Key Takeaways</h4>
+            <ul>
+              <li><strong>Community install scripts</strong> save significant setup time for the Node-RED/InfluxDB/Grafana combo on Raspberry Pi, but package repositories can go stale — always be ready to patch GPG keys.</li>
+              <li><strong>Database naming consistency</strong> between Node-RED's output and the Grafana data source is the most common point of failure when dashboards show no data.</li>
+              <li><strong>LAN-first, then secure</strong>: get the stack working locally over LAN IP first, then layer on SSL/domain exposure once the pipeline is verified end-to-end.</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1353,7 +1533,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08 });
 
-document.querySelectorAll('.sec-fade,.about-item,.stat-card,.skill-panel,.exp-card,.proj-card,.edu-card,.os-card,.cert-item').forEach(el => observer.observe(el));
+document.querySelectorAll('.sec-fade,.about-item,.stat-card,.skill-panel,.exp-card,.proj-card,.edu-card,.os-card,.cert-item,.blog-card').forEach(el => observer.observe(el));
 
 // Staggered delays for groups
 document.querySelectorAll('.about-item').forEach((el,i) => el.style.transitionDelay = (i*0.12)+'s');
