@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Apurba Koley — Design • Build • Automate • Deliver</title>
+<title>Apurba Koley — Project Manager & AI Developer</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -113,8 +113,9 @@ section,#home{max-width:1140px;margin:0 auto;padding:5.5rem 2rem;}
 .hero-eyebrow{font-family:var(--mono);font-size:0.78rem;color:var(--text-dim);letter-spacing:0.25em;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;opacity:0;animation:heroUp 0.8s ease forwards;}
 .hero-eyebrow .eline{width:40px;height:1px;background:var(--cyan);}
 .hero-headline{margin-bottom:1.2rem;overflow:hidden;}
-.hero-headline .big{display:block;font-size:clamp(3.5rem,9vw,6.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:var(--text);opacity:0;animation:heroUp 1s ease 0.2s forwards;}
-.hero-headline .accent{display:block;font-size:clamp(3.5rem,9vw,6.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:transparent;-webkit-text-stroke:2px var(--cyan);text-shadow:0 0 50px rgba(0,212,255,0.3);opacity:0;animation:heroUp 1s ease 0.35s forwards;}
+.hero-headline .big{display:inline;font-size:clamp(3.5rem,9vw,6.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:var(--text);opacity:0;animation:heroUp 1s ease 0.2s forwards;}
+.hero-headline .accent{display:inline;font-size:clamp(3.5rem,9vw,6.8rem);font-weight:800;letter-spacing:-0.03em;line-height:1.0;color:var(--cyan);text-shadow:0 0 40px rgba(0,212,255,0.5);opacity:0;animation:heroUp 1s ease 0.35s forwards;}
+.hero-headline{display:block;margin-bottom:1.2rem;}
 .hero-tagline{font-family:var(--mono);font-size:1rem;color:var(--cyan);margin-bottom:1rem;letter-spacing:0.05em;opacity:0;animation:heroUp 0.8s ease 0.5s forwards;}
 .hero-roles{list-style:none;margin-bottom:1.4rem;display:flex;flex-direction:column;gap:0.25rem;}
 .hero-roles li{font-size:0.9rem;color:var(--text-dim);display:flex;align-items:center;gap:0.6rem;opacity:0;}
@@ -163,8 +164,8 @@ section,#home{max-width:1140px;margin:0 auto;padding:5.5rem 2rem;}
 .stat-label{font-size:0.68rem;color:var(--text-mute);letter-spacing:0.1em;text-transform:uppercase;}
 
 /* ══ SKILLS ══ */
-.skills-layout{display:grid;grid-template-columns:minmax(260px,340px) 1fr;gap:3rem;align-items:start; width:100%;}
-.radar-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.5rem;}
+.skills-layout{display:grid;grid-template-columns:420px 1fr;gap:2.5rem;align-items:start;}
+.radar-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.5rem 2rem 2.5rem;}
 .radar-title{font-family:var(--mono);font-size:0.68rem;color:var(--cyan);letter-spacing:0.15em;margin-bottom:1rem;}
 .radar-wrap{position:relative;width:100%;aspect-ratio:1;}
 .skill-panels{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
@@ -379,7 +380,7 @@ footer span{color:var(--cyan);}
     <h1 class="cin-name" data-text="Apurba Koley">
       <span class="w1">Apurba </span><span class="w2">Koley</span>
     </h1>
-    <p class="cin-sub">Design • Build • Automate • Deliver</p>
+    <p class="cin-sub">PROJECT MANAGER · AI DEVELOPER · QA ENGINEER</p>
     <div class="cin-line"></div>
     <p class="cin-counter" id="cin-counter">LOADING 000%</p>
   </div>
@@ -409,9 +410,7 @@ footer span{color:var(--cyan);}
 <!-- HERO -->
 <div id="home">
   <p class="hero-eyebrow"><span class="eline"></span>ENGINEERING INTELLIGENCE. DELIVERING RESULTS.</p>
-  <h1 class="hero-headline">
-    <span class="big">Apurba Koley</span>
-  </h1>
+  <h1 class="hero-headline"><span class="big">Apurba </span><span class="accent">Koley</span></h1>
   <p class="hero-tagline">// I build systems that fly, track, and think.</p>
   <div class="hero-type-wrap">
     <span class="hero-type-prefix">&gt; </span><span id="hero-typed" class="hero-typed"></span><span class="hero-type-cursor">|</span>
@@ -461,11 +460,11 @@ footer span{color:var(--cyan);}
 <!-- SKILLS -->
 <section id="skills">
   <p class="sec-tag sec-fade">// SKILLS</p>
-  <h2 class="sec-title sec-fade">Technology Matrix<span> </span></h2>
+  <h2 class="sec-title sec-fade">The full <span>tech stack</span></h2>
   <div class="skills-layout sec-fade">
     <div class="radar-box">
-      <p class="radar-title">PROFICIENCY MAP</p>
-      <div class="radar-wrap"><canvas id="radar-canvas" style="width:140%;height:100%;"></canvas></div>
+      <p class="radar-title">// PROFICIENCY MAP</p>
+      <div class="radar-wrap"><canvas id="radar-canvas" style="width:100%;height:100%;"></canvas></div>
     </div>
     <div class="skill-panels">
       <div class="skill-panel">
@@ -508,37 +507,36 @@ footer span{color:var(--cyan);}
     <div class="exp-vert-line"></div>
     <div class="exp-item"><div class="exp-dot"></div>
       <div class="exp-card">
-        <div class="exp-header"><p class="exp-role">Project Manager &amp; AI Developer</p><span class="exp-period">NOV 2022 — PRESENT</span></div>
+        <div class="exp-header"><p class="exp-role">Project Manager &amp; AI Developer — R&amp;D</p><span class="exp-period">NOV 2022 — PRESENT</span></div>
         <p class="exp-company">⚡ Applied ElectroMagnetics Pvt Ltd · Noida, India</p>
-        <p class="exp-desc">Leading R&D initiatives in defence and automotive domains — from concept to working prototype — while managing cross-functional teams and developing AI software in-house.</p>
+        <p class="exp-desc">Leading R&amp;D initiatives in defence and automotive domains — from concept to working prototype — while managing cross-functional teams and developing AI software in-house.</p>
         <ul class="exp-bullets">
-          <li>Researching and developing AI-based target detection, tracking & interception logic for Interceptor Drone system</li>
-          <li>Driving R&D project lifecycle for Twin Beam Headlight and Stabilized Camera — from requirements to field validation</li>
-          <li>Architecting and deploying open-source platforms (OpenRemote, Odoo ERP, Nextcloud, TrueNAS) for R&D operational needs</li>
-          <li>Coordinating multidisciplinary R&D teams across AI software, firmware, RF, and hardware domains</li>
+          <li>Researching and developing AI-based target detection, tracking &amp; interception logic for Interceptor Drone system</li>
+          <li>Driving R&amp;D project lifecycle for Twin Beam Headlight and Stabilized Camera System — requirements to field validation</li>
+          <li>Architecting and deploying open-source platforms (OpenRemote, Odoo ERP, Nextcloud, TrueNAS) tailored to R&amp;D operational needs</li>
+          <li>Coordinating multidisciplinary R&amp;D teams across AI software, firmware, RF, and hardware domains</li>
         </ul>
       </div>
     </div>
     <div class="exp-item"><div class="exp-dot"></div>
       <div class="exp-card">
-        <div class="exp-header"><p class="exp-role">Software Tester-R&D </p><span class="exp-period">MAR 2022 — OCT 2022</span></div>
+        <div class="exp-header"><p class="exp-role">Software Tester</p><span class="exp-period">MAR 2022 — OCT 2022</span></div>
         <p class="exp-company">🔬 Lazot Technologies Pvt Ltd · Kolkata, India</p>
-        <p class="exp-desc">Contributed to R&D initiatives through software testing across web and embedded platforms.</p>
+        <p class="exp-desc">Functional and automation testing across web and embedded platforms.</p>
         <ul class="exp-bullets">
           <li>Executed functional, regression, and REST API testing</li>
-          <li>Developed Selenium automation scripts and tracked defects using JIRA</li>
-          <li>Collaborated with the R&D team to validate product quality and functionality</li>
+          <li>Built Selenium automation scripts; managed defect tracking via JIRA</li>
         </ul>
       </div>
     </div>
     <div class="exp-item"><div class="exp-dot"></div>
       <div class="exp-card">
-        <div class="exp-header"><p class="exp-role">Associate — Quality Assurance (QA) </p><span class="exp-period">AUG 2021 — FEB 2022</span></div>
-        <p class="exp-company">🏢 Wipro Technologies</p>
-        <p class="exp-desc">Performed quality assurance and compliance validation for digital platform operations.</p>
+        <div class="exp-header"><p class="exp-role">QA Engineer</p><span class="exp-period">AUG 2021 — FEB 2022</span></div>
+        <p class="exp-company">🏢 Wipro Technologies (Facebook Project)</p>
+        <p class="exp-desc">Quality assurance and content policy compliance for Facebook platform operations.</p>
         <ul class="exp-bullets">
-          <li>Ensured quality, accuracy, and compliance across large-scale digital platform operations</li>
-          <li>Collaborated with moderation teams to improve review workflows</li>
+          <li>Performed quality checks on content to ensure adherence to platform standards</li>
+          <li>Collaborated with moderation teams providing feedback to enhance QA processes</li>
         </ul>
       </div>
     </div>
@@ -628,7 +626,20 @@ footer span{color:var(--cyan);}
   </div>
 </section>
 
-<footer><p>© 2026 <span>Apurba Koley</span> · Project Manager &amp; AI Developer · Noida, India</p></footer>
+<footer>
+  <div style="display:flex;justify-content:center;gap:2.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <p style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--cyan);text-shadow:0 0 16px rgba(0,212,255,0.5);" id="count-today">—</p>
+      <p style="font-family:var(--mono);font-size:0.6rem;color:var(--text-mute);letter-spacing:0.15em;margin-top:2px;">VISITORS TODAY</p>
+    </div>
+    <div style="width:1px;background:var(--border);"></div>
+    <div style="text-align:center;">
+      <p style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--cyan);text-shadow:0 0 16px rgba(0,212,255,0.5);" id="count-total">—</p>
+      <p style="font-family:var(--mono);font-size:0.6rem;color:var(--text-mute);letter-spacing:0.15em;margin-top:2px;">TOTAL VISITORS</p>
+    </div>
+  </div>
+  <p>© 2026 <span>Apurba Koley</span> · Project Manager &amp; AI Developer · Noida, India</p>
+</footer>
 </div>
 
 <!-- CHAT WIDGET -->
@@ -737,8 +748,9 @@ function drawRadar() {
   rc.width = size*dpr; rc.height = size*dpr;
   rc.style.width = size+'px'; rc.style.height = size+'px';
   rctx.scale(dpr, dpr);
-  const cx=size/2, cy=size/2, r=size*0.37;
-  const labels=['QA Testing','AI Dev','Project Mgmt','Open Source','Infra & Linux'];
+  const pad=65, r=(size/2)-pad;
+  const cx=size/2, cy=size/2;
+  const labels=['QA Testing','AI Dev','Project\nMgmt','Open\nSource','Infra &\nLinux'];
   const vals=[0.93,0.79,0.91,0.85,0.88];
   const n=labels.length;
   for(let ring=1;ring<=4;ring++){
@@ -762,21 +774,27 @@ function drawRadar() {
     i===0?rctx.moveTo(px,py):rctx.lineTo(px,py);
   }
   rctx.closePath();
-  rctx.fillStyle='rgba(0,212,255,0.1)'; rctx.fill();
-  rctx.strokeStyle='rgba(0,212,255,0.85)'; rctx.lineWidth=2; rctx.stroke();
+  rctx.fillStyle='rgba(0,212,255,0.12)'; rctx.fill();
+  rctx.strokeStyle='rgba(0,212,255,0.9)'; rctx.lineWidth=2; rctx.stroke();
   for(let i=0;i<n;i++){
     const a=(i/n)*Math.PI*2-Math.PI/2;
     const px=cx+Math.cos(a)*r*vals[i], py=cy+Math.sin(a)*r*vals[i];
     rctx.beginPath(); rctx.arc(px,py,5,0,Math.PI*2);
     rctx.fillStyle='#00d4ff'; rctx.fill();
-    rctx.strokeStyle='rgba(0,212,255,0.3)'; rctx.lineWidth=8; rctx.stroke();
+    rctx.strokeStyle='rgba(0,212,255,0.25)'; rctx.lineWidth=8; rctx.stroke();
   }
-  rctx.font=`600 ${Math.max(size*0.05,9)}px JetBrains Mono,monospace`;
-  rctx.fillStyle='rgba(0,212,255,0.7)'; rctx.textAlign='center';
+  const fsize=Math.max(size*0.044,10);
+  rctx.font=`600 ${fsize}px JetBrains Mono,monospace`;
+  rctx.fillStyle='rgba(0,212,255,0.8)'; rctx.textAlign='center';
   for(let i=0;i<n;i++){
     const a=(i/n)*Math.PI*2-Math.PI/2;
-    const lx=cx+Math.cos(a)*(r+26), ly=cy+Math.sin(a)*(r+26)+5;
-    rctx.fillText(labels[i],lx,ly);
+    const labelR = r + fsize*1.5 + 8;
+    const lx=cx+Math.cos(a)*labelR;
+    const ly=cy+Math.sin(a)*labelR;
+    const lines=labels[i].split('\n');
+    const lineH=fsize*1.2;
+    const startY=ly - ((lines.length-1)*lineH)/2;
+    lines.forEach((line,li)=>{ rctx.fillText(line, lx, startY+li*lineH); });
   }
 }
 setTimeout(drawRadar, 300); window.addEventListener('resize', ()=>setTimeout(drawRadar,100));
@@ -810,6 +828,34 @@ window.addEventListener('scroll', () => {
   allSec.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
   navA.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
 });
+
+// ══ VISITOR COUNTER ══
+(function(){
+  try {
+    const today = new Date().toISOString().slice(0,10);
+    let total = parseInt(localStorage.getItem('ak_total')||'0');
+    let todayCount = parseInt(localStorage.getItem('ak_today_count')||'0');
+    let todayDate = localStorage.getItem('ak_today_date')||'';
+    if(todayDate !== today){ todayCount=0; }
+    total++; todayCount++;
+    localStorage.setItem('ak_total', total);
+    localStorage.setItem('ak_today_count', todayCount);
+    localStorage.setItem('ak_today_date', today);
+    // Animate count up
+    function animCount(el, target){
+      let cur=0; const step=Math.ceil(target/40);
+      const t=setInterval(()=>{
+        cur=Math.min(cur+step,target);
+        el.textContent=cur.toLocaleString();
+        if(cur>=target) clearInterval(t);
+      },30);
+    }
+    setTimeout(()=>{
+      animCount(document.getElementById('count-today'), todayCount);
+      animCount(document.getElementById('count-total'), total);
+    }, 500);
+  } catch(e){}
+})();
 
 // ══ TYPING ANIMATION ══
 const typingRoles = [
